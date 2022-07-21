@@ -1,38 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import "../layout.css";
+import userMenu2 from "./dynamicMenuList";
+import userMenu from "./menuList";
 
 function Layout({ children }) {
   const location = useLocation();
-  const userMenu = [
-    {
-      name: "Home",
-      path: "/",
-      icon: "ri-home-3-line",
-    },
-    {
-      name: "Appointments",
-      path: "/appointments",
-      icon: "ri-file-list-3-line",
-    },
-    {
-      name: "Apply Doctor",
-      path: "/apply-doctor",
-      icon: "ri-nurse-fill",
-    },
-    {
-      name: "Profile",
-      path: "/profile",
-      icon: "ri-user-line",
-    },
-    {
-      name: "Logout",
-      path: "/logout",
-      icon: "ri-logout-circle-r-line",
-    },
-  ];
-
-  const menuToBeRendered = userMenu;
+  const [collapsed, setCollapsed] = useState(false);
+  const { user } = useSelector((state) => state.user);
+  const menuToBeRendered = userMenu2;
   return (
     <div className="main">
       <div className="d-flex layout">
@@ -49,14 +26,37 @@ function Layout({ children }) {
                   }`}
                 >
                   <i className={menu.icon}></i>
-                  <Link to={menu.path}>{menu.name}</Link>
+                  {!collapsed && <Link to={menu.path}>{menu.name}</Link>}
                 </div>
               );
             })}
           </div>
         </div>
         <div className="content">
-          <div className="header">header</div>
+          <div className="header">
+            {collapsed ? (
+              <i
+                className="ri-menu-2-fill header-action-icon"
+                onClick={() => {
+                  setCollapsed(false);
+                }}
+              ></i>
+            ) : (
+              <i
+                className="ri-close-fill header-action-icon"
+                onClick={() => {
+                  setCollapsed(true);
+                }}
+              ></i>
+            )}
+            <div className="d-flex align-items-center">
+              <i className="ri-notification-3-line header-action-icon px-2"></i>
+              <Link className="anchor px-4" to="/profile">
+                {user?.name}
+              </Link>
+            </div>
+          </div>
+
           <div className="body">{children}</div>
         </div>
       </div>

@@ -27,7 +27,7 @@ function Home() {
 
   return (
     <Layout>
-      <Formsy />
+      <h1>HomePage</h1>
     </Layout>
   );
 }
