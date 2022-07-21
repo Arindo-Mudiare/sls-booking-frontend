@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
+import Layout from "../components/Layout";
+import Formsy from "./Formsy";
 
 function Home() {
   const getData = async () => {
@@ -23,7 +25,11 @@ function Home() {
     getData();
   }, []);
 
-  return <div>Home</div>;
+  return (
+    <Layout>
+      <Formsy />
+    </Layout>
+  );
 }
 
 export default Home;
