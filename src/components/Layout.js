@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../layout.css";
 import userMenu2 from "./dynamicMenuList";
 import userMenu from "./menuList";
+import supaAdminMenu from "./supaAdminMenu";
 
 function Layout({ children }) {
   const location = useLocation();
+  const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
   const { user } = useSelector((state) => state.user);
-  const menuToBeRendered = userMenu2;
+  const menuToBeRendered = user?.isSuperAdmin ? supaAdminMenu : userMenu2;
+  console.log(user);
   return (
     <div className="main">
       <div className="d-flex layout">
@@ -30,6 +33,17 @@ function Layout({ children }) {
                 </div>
               );
             })}
+            <div
+              className={`d-flex menu-item `}
+              onClick={() => {
+                localStorage.clear();
+                window.location.reload(false);
+                navigate("/login");
+              }}
+            >
+              <i className="ri-logout-circle-r-line"></i>
+              {!collapsed && <Link to="/login">Logout</Link>}
+            </div>
           </div>
         </div>
         <div className="content">

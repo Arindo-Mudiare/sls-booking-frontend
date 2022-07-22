@@ -19,11 +19,6 @@ const userMenu = [
     path: "/profile",
     icon: "ri-user-line",
   },
-  {
-    name: "Logout",
-    path: "/logout",
-    icon: "ri-logout-circle-r-line",
-  },
 ];
 
 export default userMenu;

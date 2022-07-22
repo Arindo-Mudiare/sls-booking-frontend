@@ -24,11 +24,6 @@ const userMenu2 = [
     path: "/book-truck",
     icon: "ri-truck-line",
   },
-  {
-    name: "Logout",
-    path: "/logout",
-    icon: "ri-logout-circle-r-line",
-  },
 ];
 
 export default userMenu2;

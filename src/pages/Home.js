@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import Layout from "../components/Layout";
-import Formsy from "./Formsy";
 
 function Home() {
   const getData = async () => {
@@ -15,10 +14,7 @@ function Home() {
           },
         }
       );
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
