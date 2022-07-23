@@ -7,6 +7,10 @@ import Home from "./pages/Home";
 import { useSelector } from "react-redux";
 import ProtectedRoute from "./components/protectedRoute";
 import PublicRoutes from "./components/publicRoutes";
+import BookBikes from "./pages/BookBikes";
+import BookBus from "./pages/BookBus";
+import BookTruck from "./pages/BookTruck";
+import InterstateDispatch from "./pages/InterstateDispatch";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -25,6 +29,38 @@ function App() {
           element={
             <ProtectedRoute>
               <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/book-bikes"
+          element={
+            <ProtectedRoute>
+              <BookBikes />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/book-bus"
+          element={
+            <ProtectedRoute>
+              <BookBus />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/book-truck"
+          element={
+            <ProtectedRoute>
+              <BookTruck />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/interstate-dispatch"
+          element={
+            <ProtectedRoute>
+              <InterstateDispatch />
             </ProtectedRoute>
           }
         />

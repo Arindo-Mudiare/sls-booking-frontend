@@ -23,7 +23,7 @@ function Home() {
 
   return (
     <Layout>
-      <h1>HomePage</h1>
+      <h1>All Bookings</h1>
     </Layout>
   );
 }

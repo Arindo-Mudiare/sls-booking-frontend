@@ -1,6 +1,6 @@
 const userMenu2 = [
   {
-    name: "Home",
+    name: "All Bookings",
     path: "/",
     icon: "ri-user-line",
   },
@@ -21,7 +21,7 @@ const userMenu2 = [
   },
   {
     name: "Interstate Dispatch",
-    path: "/book-truck",
+    path: "/interstate-dispatch",
     icon: "ri-truck-line",
   },
 ];

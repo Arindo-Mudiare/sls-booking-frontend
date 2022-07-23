@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../layout.css";
 import userMenu2 from "./dynamicMenuList";
-import userMenu from "./menuList";
 import supaAdminMenu from "./supaAdminMenu";
 
 function Layout({ children }) {
@@ -12,7 +11,7 @@ function Layout({ children }) {
   const [collapsed, setCollapsed] = useState(false);
   const { user } = useSelector((state) => state.user);
   const menuToBeRendered = user?.isSuperAdmin ? supaAdminMenu : userMenu2;
-  console.log(user);
+  // console.log(user);
   return (
     <div className="main">
       <div className="d-flex layout">
@@ -63,10 +62,11 @@ function Layout({ children }) {
                 }}
               ></i>
             )}
+            <h1 className="app-header">SLS Portation Bookings</h1>
             <div className="d-flex align-items-center">
               <i className="ri-notification-3-line header-action-icon px-2"></i>
-              <Link className="anchor px-4" to="/profile">
-                {user?.name}
+              <Link className="anchor pad-user" to="/profile">
+                Welcome {user?.name}
               </Link>
             </div>
           </div>

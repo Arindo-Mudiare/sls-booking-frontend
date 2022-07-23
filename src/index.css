@@ -43,10 +43,29 @@ label {
     height: 5rem;
     color: white !important;
 }
+
+.page-title {
+    font-size: 25px;
+    color: rgba(0, 0, 0, 0.544);
+}
+
+.fade-title{
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.544);
+}
+
 .card-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
+}
+
+.card-mgy {
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .normal-text {
@@ -90,6 +109,11 @@ label {
     width: 100% !important;
     color: #fff !important;
     font-size: 16px !important;
+    margin-top: 15px !important;
+width: max-content !important;
+}
+.bt-submit{
+    padding-bottom: 10px;
 }
 .anchor {
     color: black !important;
@@ -98,4 +122,18 @@ label {
 
 .anchor:hover {
     text-decoration: underline !important;
+}
+
+@media screen and (max-width: 768px){
+    .card-title {
+        font-size: 0.8rem;
+    }
+    .card-mgy {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.anchor {
+    color: #178cb7 !important;
+    font-size: 12px !important;
+}
 }
