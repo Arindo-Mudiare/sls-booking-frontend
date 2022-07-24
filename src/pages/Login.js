@@ -42,6 +42,7 @@ function Login() {
           <Button className="primary-button my-2" htmlType="submit">
             Login
           </Button>
+          <br></br>
           <Link to="/register" className="anchor">
             Not Registered yet? Click here to Register
           </Link>

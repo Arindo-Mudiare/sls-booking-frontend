@@ -44,6 +44,7 @@ function Register() {
           <Button className="primary-button my-2" htmlType="submit">
             Register
           </Button>
+          <br></br>
           <Link to="/login" className="anchor">
             Already Registered? Click here to Login
           </Link>

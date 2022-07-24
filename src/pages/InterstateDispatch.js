@@ -7,7 +7,7 @@ function InterstateDispatch() {
     <Layout>
       <h1 className="card-title fade-title">Interstate Dispatch Booking</h1>
       <hr />
-      <FormTemplate />
+      <FormTemplate isTruck={false} />
     </Layout>
   );
 }

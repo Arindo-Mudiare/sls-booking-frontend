@@ -1,7 +1,8 @@
 import React from "react";
 import { Button, Col, Form, Input, Row } from "antd";
 
-function FormTemplate(isTruck) {
+function FormTemplate(props) {
+  const isTruck = props.isTruck;
   const onFinish = (values) => {
     console.log("Success: ", values);
   };
@@ -15,7 +16,12 @@ function FormTemplate(isTruck) {
               required
               label="Name"
               name="Name"
-              rules={[{ required: true }]}
+              rules={[
+                {
+                  required: true,
+                  message: "Please enter your name",
+                },
+              ]}
             >
               <Input placeholder="Name" />
             </Form.Item>
@@ -25,7 +31,12 @@ function FormTemplate(isTruck) {
               required
               label="Pick up Address(From)"
               name="pickUpFrom"
-              rules={[{ required: true }]}
+              rules={[
+                {
+                  required: true,
+                  message: "Please enter your Pick up Address",
+                },
+              ]}
             >
               <Input placeholder="Pick up Address(From)" />
             </Form.Item>
@@ -35,7 +46,12 @@ function FormTemplate(isTruck) {
               required
               label="Delivery Address(To)"
               name="deliverTo"
-              rules={[{ required: true }]}
+              rules={[
+                {
+                  required: true,
+                  message: "Please enter your Delivery Address",
+                },
+              ]}
             >
               <Input placeholder="Delivery Address(To)" />
             </Form.Item>
@@ -45,7 +61,9 @@ function FormTemplate(isTruck) {
               required
               label="Sender's Phone number(s)"
               name="sphoneNumber"
-              rules={[{ required: true }]}
+              rules={[
+                { required: true, message: "Please enter your Phone Number" },
+              ]}
             >
               <Input placeholder="Sender's Phone number(s)" />
             </Form.Item>
@@ -55,7 +73,12 @@ function FormTemplate(isTruck) {
               required
               label="Receiver's Phone number(s)"
               name="rphoneNumber"
-              rules={[{ required: true }]}
+              rules={[
+                {
+                  required: true,
+                  message: "Please enter the Receiver's Phone Number",
+                },
+              ]}
             >
               <Input placeholder="Reciver's Phone number(s)" />
             </Form.Item>
@@ -65,7 +88,12 @@ function FormTemplate(isTruck) {
               required
               label="Decription of item(s)"
               name="description"
-              rules={[{ required: true }]}
+              rules={[
+                {
+                  required: true,
+                  message: "Please enter the item description",
+                },
+              ]}
             >
               <Input placeholder="Decription of item(s)" />
             </Form.Item>
@@ -75,7 +103,12 @@ function FormTemplate(isTruck) {
               required
               label="Quantity"
               name="quantity"
-              rules={[{ required: true }]}
+              rules={[
+                {
+                  required: true,
+                  message: "Please enter the quantity of items to be sent",
+                },
+              ]}
             >
               <Input placeholder="Quantity" />
             </Form.Item>
@@ -85,7 +118,12 @@ function FormTemplate(isTruck) {
               required
               label="Additional information"
               name="additionalInfo"
-              rules={[{ required: true }]}
+              rules={[
+                {
+                  required: true,
+                  message: "Kindly enter any Additional information here",
+                },
+              ]}
             >
               <Input placeholder="Additional information" />
             </Form.Item>
@@ -96,9 +134,9 @@ function FormTemplate(isTruck) {
                 required
                 label="Input Offer"
                 name="inputOffer"
-                rules={[{ required: true }]}
+                rules={[{ required: false }]}
               >
-                <Input disabled={true} placeholder="Please Input your Offer" />
+                <Input placeholder="Please Input your Offer" />
               </Form.Item>
             </Col>
           )}

@@ -7,7 +7,7 @@ function BookTruck() {
     <Layout>
       <h1 className="card-title fade-title">Book Truck Service</h1>
       <hr />
-      <FormTemplate />
+      <FormTemplate isTruck={true} />
     </Layout>
   );
 }

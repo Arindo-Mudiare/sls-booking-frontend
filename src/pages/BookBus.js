@@ -7,7 +7,7 @@ function BookBus() {
     <Layout>
       <h1 className="card-title fade-title">Book Bus Service</h1>
       <hr />
-      <FormTemplate />
+      <FormTemplate isTruck={false} />
     </Layout>
   );
 }
