@@ -1,31 +1,103 @@
 import React from "react";
-import { Button, Col, Form, Input, Row } from "antd";
+import { Select, Button, Col, Form, Input, Row } from "antd";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { hideLoading, showLoading } from "../redux/alertsSlice";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 function FormTemplate(props) {
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+
   const isTruck = props.isTruck;
-  const onFinish = (values) => {
-    console.log("Success: ", values);
+  const isBike = props.isBike;
+  const isBus = props.isBus;
+  const isDispatch = props.isDispatch;
+
+  const onFinish = async (values) => {
+    try {
+      dispatch(showLoading());
+      const response = await axios.post(
+        "/api/user/submit-new-booking",
+        {
+          ...values,
+          userId: user._id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      dispatch(hideLoading());
+      if (response.data.success) {
+        toast.success(response.data.message);
+        navigate("/");
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      dispatch(hideLoading());
+      toast.error("Something went wrong!");
+    }
   };
+
   return (
     <div className="form-container">
-      <Form layout="vertical" className="form-effizi" onFinish={onFinish}>
+      <Form
+        layout="vertical"
+        className="form-effizi"
+        onFinish={onFinish}
+        initialValues={{ remember: true }}
+      >
         <h1 className="card-title card-mgy">Kindly Provide Details Below...</h1>
         <Row gutter={20}>
           <Col span={8} xs={24} sm={24} lg={8}>
             <Form.Item
               required
-              label="Name"
-              name="Name"
+              label="Type of Booking"
+              name="bookingType"
               rules={[
                 {
                   required: true,
-                  message: "Please enter your name",
+                  message: "Please select a type of booking",
                 },
+              ]}
+            >
+              <Select>
+                <Select.Option value="bikeBooking">Bike Booking</Select.Option>
+                <Select.Option value="busBooking">Bus Booking</Select.Option>
+                <Select.Option value="truckBooking">
+                  Truck Booking
+                </Select.Option>
+                <Select.Option value="interstateDispatch">
+                  Interstate Dispatch
+                </Select.Option>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={8} xs={24} sm={24} lg={8}>
+            <Form.Item
+              required
+              label="Name"
+              name="name"
+              rules={[
+                {
+                  required: true,
+                  message: "The name is required.",
+                },
+                // {
+                //   pattern: /A-Za-z0-9_/,
+                //   message: "Name can only include letters.",
+                // },
               ]}
             >
               <Input placeholder="Name" />
             </Form.Item>
           </Col>
+
           <Col span={8} xs={24} sm={24} lg={8}>
             <Form.Item
               required
@@ -128,18 +200,21 @@ function FormTemplate(props) {
               <Input placeholder="Additional information" />
             </Form.Item>
           </Col>
-          {isTruck && (
-            <Col span={8} xs={24} sm={24} lg={8}>
-              <Form.Item
-                required
-                label="Input Offer"
-                name="inputOffer"
-                rules={[{ required: false }]}
-              >
-                <Input placeholder="Please Input your Offer" />
-              </Form.Item>
-            </Col>
-          )}
+
+          <Col span={8} xs={24} sm={24} lg={8}>
+            <Form.Item
+              label="Input Offer"
+              name="inputOffer"
+              rules={[{ required: false }]}
+            >
+              <Input
+                placeholder={
+                  isTruck ? "Please Input your Offer" : "Not Available"
+                }
+                disabled={isTruck ? false : true}
+              />
+            </Form.Item>
+          </Col>
         </Row>
 
         <div className="d-flex justify-content-end bt-submit">

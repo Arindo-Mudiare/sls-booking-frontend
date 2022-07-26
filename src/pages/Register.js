@@ -30,7 +30,7 @@ function Register() {
   return (
     <div className="authentication">
       <div className="authentication-form card p-4">
-        <h1 className="card-title">SLS Bookings Portal</h1>
+        <h1 className="card-title">SLS Booking Portal</h1>
         <Form layout="vertical" onFinish={onFinish}>
           <Form.Item label="Name" name="name">
             <Input placeholder="Enter Username" />
