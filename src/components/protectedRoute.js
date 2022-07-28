@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { setUser } from "../redux/userSlice";
+import { setUser, reloadUserData } from "../redux/userSlice";
 import { hideLoading, showLoading } from "../redux/alertsSlice";
 
 function ProtectedRoute(props) {
-  const { user } = useSelector((state) => state.user);
+  const { user, reloadUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -27,6 +27,7 @@ function ProtectedRoute(props) {
       dispatch(hideLoading());
       if (response.data.success) {
         dispatch(setUser(response.data.data));
+        // dispatch(reloadUserData(false));
       } else {
         localStorage.clear();
         navigate("/login");
@@ -40,10 +41,10 @@ function ProtectedRoute(props) {
   };
 
   useEffect(() => {
-    if (!user) {
+    if (!user || reloadUser) {
       getUser();
     }
-  }, [user]);
+  }, [user, reloadUser]);
 
   if (localStorage.getItem("token")) {
     return props.children;

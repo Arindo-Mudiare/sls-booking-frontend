@@ -33,8 +33,8 @@ function Login() {
       <div className="authentication-form card p-4">
         <h1 className="card-title">Welcome Back!</h1>
         <Form layout="vertical" onFinish={onFinish}>
-          <Form.Item label="Email" name="email">
-            <Input placeholder="Enter Email" />
+          <Form.Item label="Email or Phone Number" name="email">
+            <Input placeholder="Enter Email or Phone Number" />
           </Form.Item>
           <Form.Item label="Password" name="password">
             <Input placeholder="type your password" type="password" />

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Badge } from "antd";
 import { useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../layout.css";
@@ -18,11 +19,11 @@ function Layout({ children }) {
         <div className="sidebar">
           <div className="sidebar-header">SLS</div>
           <div className="menu">
-            {menuToBeRendered.map((menu) => {
+            {menuToBeRendered.map((menu, key) => {
               const isActive = location.pathname === menu.path;
-
               return (
                 <div
+                  key={menu.path}
                   className={`d-flex menu-item ${
                     isActive && "active-menu-item"
                   }`}
@@ -64,8 +65,14 @@ function Layout({ children }) {
             )}
             <h1 className="app-header">SLS Portation Bookings</h1>
             <div className="d-flex align-items-center">
-              <i className="ri-notification-3-line header-action-icon px-2"></i>
-              <Link className="anchor pad-user" to="/profile">
+              <Badge
+                count={user?.unseenNotifications.length}
+                onClick={() => navigate("/notifications")}
+              >
+                <i className="ri-notification-3-line header-action-icon px-2"></i>
+              </Badge>
+
+              <Link className="anchor pad-user mx-3" to="/profile">
                 Welcome {user?.name}
               </Link>
             </div>
