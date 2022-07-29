@@ -41,13 +41,15 @@ function Register() {
           <Form.Item label="Password" name="password">
             <Input placeholder="type your password" type="password" />
           </Form.Item>
-          <Button className="primary-button my-2" htmlType="submit">
-            Register
-          </Button>
-          <br></br>
-          <Link to="/login" className="anchor">
-            Already Registered? Click here to Login
-          </Link>
+          <div className="d-flex flex-column">
+            <Button className="primary-button my-2" htmlType="submit">
+              Register
+            </Button>
+
+            <Link to="/login" className="anchor">
+              Already Registered? Click here to Login
+            </Link>
+          </div>
         </Form>
       </div>
     </div>

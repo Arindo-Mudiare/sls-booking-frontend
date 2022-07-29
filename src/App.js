@@ -12,6 +12,8 @@ import BookBus from "./pages/BookBus";
 import BookTruck from "./pages/BookTruck";
 import InterstateDispatch from "./pages/InterstateDispatch";
 import Notifications from "./pages/Notifications";
+import UsersList from "./pages/Admin/UsersList";
+import BookingsList from "./pages/Admin/BookingsList";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -25,6 +27,22 @@ function App() {
 
       <Toaster position="top-center" reverseOrder={false} />
       <Routes>
+        <Route
+          path="/admin/users"
+          element={
+            <ProtectedRoute>
+              <UsersList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/bookings"
+          element={
+            <ProtectedRoute>
+              <BookingsList />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/notifications"
           element={

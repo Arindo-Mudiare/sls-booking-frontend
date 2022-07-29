@@ -6,17 +6,17 @@ const supaAdminMenu = [
   },
   {
     name: "Users",
-    path: "/users",
+    path: "/admin/users",
     icon: "ri-user-line",
   },
   {
-    name: "Staff Admins",
-    path: "/staff-admin",
+    name: "Bookings for Approval",
+    path: "/admin/bookings",
     icon: "ri-admin-line",
   },
   {
     name: "Profile",
-    path: "/profile",
+    path: "/admin/profile",
     icon: "ri-user-settings-line",
   },
 ];

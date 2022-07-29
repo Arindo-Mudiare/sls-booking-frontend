@@ -39,13 +39,15 @@ function Login() {
           <Form.Item label="Password" name="password">
             <Input placeholder="type your password" type="password" />
           </Form.Item>
-          <Button className="primary-button my-2" htmlType="submit">
-            Login
-          </Button>
-          <br></br>
-          <Link to="/register" className="anchor">
-            Not Registered yet? Click here to Register
-          </Link>
+          <div className="d-flex flex-column">
+            <Button className="primary-button my-2" htmlType="submit">
+              Login
+            </Button>
+
+            <Link to="/register" className="anchor">
+              Not Registered yet? Click here to Register
+            </Link>
+          </div>
         </Form>
       </div>
     </div>
