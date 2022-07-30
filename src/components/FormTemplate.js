@@ -1,5 +1,5 @@
 import React from "react";
-import { Select, Button, Col, Form, Input, Row } from "antd";
+import { DatePicker, Select, Button, Col, Form, Input, Row } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { hideLoading, showLoading } from "../redux/alertsSlice";
@@ -213,6 +213,20 @@ function FormTemplate(props) {
                 }
                 disabled={isTruck ? false : true}
               />
+            </Form.Item>
+          </Col>
+          <Col span={8} xs={24} sm={24} lg={8}>
+            <Form.Item
+              label="Date of Booking"
+              name="bookingDate"
+              rules={[
+                {
+                  required: true,
+                  message: "Kindly enter a Date",
+                },
+              ]}
+            >
+              <DatePicker picker="date" />
             </Form.Item>
           </Col>
         </Row>

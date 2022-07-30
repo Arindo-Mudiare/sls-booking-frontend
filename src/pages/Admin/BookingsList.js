@@ -4,6 +4,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../redux/alertsSlice";
 import { Table } from "antd";
+import moment from "moment";
 
 function BookingsList() {
   const [bookings, setBookings] = useState([]);
@@ -73,11 +74,11 @@ function BookingsList() {
       title: "Input Offer",
       dataIndex: "inputOffer",
     },
-    // {
-    //   title: "Created At",
-    //   dataIndex: "createdAt",
-    //   //   render: (record , text) => moment(record.createdAt).format("DD-MM-YYYY"),
-    // },
+    {
+      title: "Date of Booking",
+      dataIndex: "bookingDate",
+      render: (record, text) => moment(record.bookingDate).format("DD-MM-YYYY"),
+    },
     {
       title: "Status of Booking",
       dataIndex: "status",
