@@ -5,17 +5,18 @@ const supaAdminMenu = [
     icon: "ri-home-7-line",
   },
   {
-    name: "Users",
-    path: "/admin/users",
-    icon: "ri-user-line",
-  },
-  {
-    name: "Bookings for Approval",
+    name: "All Bookings",
     path: "/admin/bookings",
     icon: "ri-admin-line",
   },
   {
-    name: "Profile",
+    name: "All Users",
+    path: "/admin/users",
+    icon: "ri-user-line",
+  },
+
+  {
+    name: "Admin Profile",
     path: "/admin/profile",
     icon: "ri-user-settings-line",
   },

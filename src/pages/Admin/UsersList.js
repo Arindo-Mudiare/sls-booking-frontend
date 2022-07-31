@@ -36,6 +36,7 @@ function UsersList() {
     {
       title: "Name",
       dataIndex: "name",
+      sorter: (a, b) => a.name - b.name,
     },
     {
       title: "Email",

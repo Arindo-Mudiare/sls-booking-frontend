@@ -226,7 +226,7 @@ function FormTemplate(props) {
                 },
               ]}
             >
-              <DatePicker picker="date" />
+              <DatePicker picker="date" format="DD-MMMM-YYYY" />
             </Form.Item>
           </Col>
         </Row>

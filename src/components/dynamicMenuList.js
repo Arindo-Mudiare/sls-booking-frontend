@@ -1,11 +1,11 @@
 const userMenu2 = [
   {
-    name: "All Bookings",
+    name: "Welcome Page",
     path: "/",
     icon: "ri-user-line",
   },
   {
-    name: "Book Bikes Service",
+    name: "Book Bike Service",
     path: "/book-bikes",
     icon: "ri-motorbike-fill",
   },

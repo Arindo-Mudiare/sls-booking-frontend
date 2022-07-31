@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../redux/alertsSlice";
 import { Table } from "antd";
 import moment from "moment";
+import * as dayjs from "dayjs";
 
 function BookingsList() {
   const [bookings, setBookings] = useState([]);
@@ -39,6 +40,25 @@ function BookingsList() {
     {
       title: "Type of Booking",
       dataIndex: "bookingType",
+      filters: [
+        {
+          text: "Bus",
+          value: "busBooking",
+        },
+        {
+          text: "Bike",
+          value: "BikeBooking",
+        },
+        {
+          text: "Truck",
+          value: "truckBooking",
+        },
+        {
+          text: "Interstate",
+          value: "interstateDispatch",
+        },
+      ],
+      onFilter: (value, record) => record.bookingType.indexOf(value) === 0,
     },
     {
       title: "Pick up Address",
@@ -73,11 +93,14 @@ function BookingsList() {
     {
       title: "Input Offer",
       dataIndex: "inputOffer",
+      sorter: (a, b) => a.inputOffer - b.inputOffer,
     },
     {
       title: "Date of Booking",
       dataIndex: "bookingDate",
-      render: (record, text) => moment(record.bookingDate).format("DD-MM-YYYY"),
+      sorter: (a, b) => a.bookingDate - b.bookingDate,
+      // render: (record, dataIndex) =>
+      //   dayjs(record.dataIndex).format("DD-MMMM-YYYY"),
     },
     {
       title: "Status of Booking",
@@ -97,9 +120,13 @@ function BookingsList() {
 
   return (
     <Layout>
+      {bookings.map((booking) =>
+        console.log(dayjs(booking.bookingDate).format("DD-MMMM-YYYY"))
+      )}
+
       <h1 className="page-header">Bookings List</h1>
       <hr />
-      <Table columns={columns} dataSource={bookings} />
+      <Table columns={columns} dataSource={bookings} size="small" />
     </Layout>
   );
 }
