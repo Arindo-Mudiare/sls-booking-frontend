@@ -1,6 +1,6 @@
 import React from "react";
 import { notification, Tabs } from "antd";
-import Layout from "../components/Layout";
+import { LayoutStrip } from "../components";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { hideLoading, showLoading } from "../redux/alertsSlice";
@@ -64,7 +64,7 @@ function Notifications() {
   };
 
   return (
-    <Layout>
+    <LayoutStrip>
       <h1 className="page-title">Notifications</h1>
       <Tabs defaultActiveKey="1">
         <TabPane tab="Unseen Notifications" key={1}>
@@ -100,7 +100,7 @@ function Notifications() {
           ))}
         </TabPane>
       </Tabs>
-    </Layout>
+    </LayoutStrip>
   );
 }
 

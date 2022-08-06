@@ -6,6 +6,7 @@ import Home from "./Home";
 import InterstateDispatch from "./InterstateDispatch";
 import Error from "./Error";
 import Register from "./Register";
+import Notifications from "./Notifications";
 import ProtectedRoute from "../components/protectedRoute";
 
 export {
@@ -15,6 +16,7 @@ export {
   Home,
   InterstateDispatch,
   Landing,
+  Notifications,
   Error,
   Register,
   ProtectedRoute,

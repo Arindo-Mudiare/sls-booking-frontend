@@ -4,6 +4,7 @@ import { useAppContext } from "../context/appContext";
 import Logo from "./Logo";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { Badge } from "antd";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
@@ -13,9 +14,9 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
 
-  console.log(
-    `toggle sidebar : ${toggleSidebar}, logoutuser : ${logoutUser}, user ${user}`
-  );
+  const showNotify = user?.isSuperAdmin ? true : false;
+
+  // console.log(` user: ${user}`);
 
   return (
     <Wrapper>
@@ -27,10 +28,20 @@ const Navbar = () => {
           <Logo />
           <h3 className="logo-text">SLS Booking Portal</h3>
         </div>
-        <div className="btn-container">
+        <div className="d-flex align-items-center btn-container">
+          <div className="notify">
+            {showNotify && (
+              <Badge
+                count={user?.unseenNotifications.length}
+                onClick={() => navigate("/notifications")}
+              >
+                <i className="ri-notification-3-line header-action-icon px-2"></i>
+              </Badge>
+            )}
+          </div>
           <button
             type="button"
-            className="btn"
+            className="btn profile-user"
             onClick={() => setShowLogout(!showLogout)}
           >
             <FaUserCircle />

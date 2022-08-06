@@ -1,5 +1,5 @@
 .main {
-    padding: 20px;
+    padding: 0px;
     height: 100vh;
 }
 
@@ -10,6 +10,11 @@
     margin-right: 20px;
     min-height: 100%;
     padding: 10px;
+}
+.dashboard-page2 {
+    width: 80vw;
+    margin: 0 auto;
+    padding: 1rem 1rem;
 }
 
 .sidebar-header {
@@ -92,6 +97,9 @@
    margin-left: auto;
    width: 80%;
    
+}
+.profile-user {
+    font-size: 14px !important;
 }
 
 .form-effizi {
