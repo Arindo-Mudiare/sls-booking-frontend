@@ -1,7 +1,7 @@
 import React from "react";
 import { DatePicker, Select, Button, Col, Form, Input, Row } from "antd";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { hideLoading, showLoading } from "../redux/alertsSlice";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -12,9 +12,6 @@ function FormTemplate(props) {
   const navigate = useNavigate();
 
   const isTruck = props.isTruck;
-  const isBike = props.isBike;
-  const isBus = props.isBus;
-  const isDispatch = props.isDispatch;
 
   const onFinish = async (values) => {
     try {
@@ -34,7 +31,7 @@ function FormTemplate(props) {
       dispatch(hideLoading());
       if (response.data.success) {
         toast.success(response.data.message);
-        navigate("/");
+        navigate("/home");
       } else {
         toast.error(response.data.message);
       }

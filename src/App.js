@@ -3,10 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Home from "./pages/Home";
 import { useSelector } from "react-redux";
 import ProtectedRoute from "./components/protectedRoute";
-import PublicRoutes from "./components/publicRoutes";
 import BookBikes from "./pages/BookBikes";
 import BookBus from "./pages/BookBus";
 import BookTruck from "./pages/BookTruck";
@@ -14,6 +12,10 @@ import InterstateDispatch from "./pages/InterstateDispatch";
 import Notifications from "./pages/Notifications";
 import UsersList from "./pages/Admin/UsersList";
 import BookingsList from "./pages/Admin/BookingsList";
+import Landing from "./pages/Landing";
+import Home from "./pages/Home";
+import { Error } from "./pages";
+import SharedLayout from "./pages/SharedLayout";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -51,14 +53,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
+
         <Route
           path="/book-bikes"
           element={
@@ -91,23 +86,27 @@ function App() {
             </ProtectedRoute>
           }
         />
-
         <Route
-          path="/login"
+          path="/home"
           element={
-            <PublicRoutes>
-              <Login />
-            </PublicRoutes>
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
           }
         />
         <Route
-          path="/register"
+          path="/smilga"
           element={
-            <PublicRoutes>
-              <Register />
-            </PublicRoutes>
+            <ProtectedRoute>
+              <SharedLayout />
+            </ProtectedRoute>
           }
         />
+        <Route path="/" element={<Landing />} />
+        <Route path="/landing" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );

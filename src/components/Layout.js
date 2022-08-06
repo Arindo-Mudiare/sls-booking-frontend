@@ -42,7 +42,7 @@ function Layout({ children }) {
               }}
             >
               <i className="ri-logout-circle-r-line"></i>
-              {!collapsed && <Link to="/login">Logout</Link>}
+              {!collapsed && <Link to="/landing">Logout</Link>}
             </div>
           </div>
         </div>

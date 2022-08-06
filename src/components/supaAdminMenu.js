@@ -1,7 +1,7 @@
 const supaAdminMenu = [
   {
     name: "Booking Summary",
-    path: "/",
+    path: "/home",
     icon: "ri-home-7-line",
   },
   {

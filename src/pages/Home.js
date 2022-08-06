@@ -14,6 +14,7 @@ function Home() {
           },
         }
       );
+      console.log(response);
     } catch (error) {}
   };
 
@@ -23,7 +24,7 @@ function Home() {
 
   return (
     <Layout>
-      <h1>All Bookings</h1>
+      <h1>Your Bookings</h1>
     </Layout>
   );
 }

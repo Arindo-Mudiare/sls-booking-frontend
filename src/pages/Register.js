@@ -1,6 +1,7 @@
 import { Button, Form, Input } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
+import { Logo } from "../components";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
@@ -30,7 +31,7 @@ function Register() {
   return (
     <div className="authentication">
       <div className="authentication-form card p-4">
-        <h1 className="card-title">SLS Booking Portal</h1>
+        <Logo />
         <Form layout="vertical" onFinish={onFinish}>
           <Form.Item label="Name" name="name">
             <Input placeholder="Enter Username" />

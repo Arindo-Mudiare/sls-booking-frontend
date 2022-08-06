@@ -1,7 +1,7 @@
 const userMenu2 = [
   {
-    name: "Welcome Page",
-    path: "/",
+    name: "Your Bookings",
+    path: "/smilga",
     icon: "ri-user-line",
   },
   {
