@@ -5,16 +5,18 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useSelector } from "react-redux";
 import ProtectedRoute from "./components/protectedRoute";
-import BookBikes from "./pages/BookBikes";
-import BookBus from "./pages/BookBus";
-import BookTruck from "./pages/BookTruck";
-import InterstateDispatch from "./pages/InterstateDispatch";
 import Notifications from "./pages/Notifications";
 import UsersList from "./pages/Admin/UsersList";
 import BookingsList from "./pages/Admin/BookingsList";
 import Landing from "./pages/Landing";
-import Home from "./pages/Home";
-import { Error } from "./pages";
+import {
+  Error,
+  BookBikes,
+  Home,
+  BookBus,
+  BookTruck,
+  InterstateDispatch,
+} from "./pages";
 import SharedLayout from "./pages/SharedLayout";
 
 function App() {
@@ -28,74 +30,29 @@ function App() {
       )}
 
       <Toaster position="top-center" reverseOrder={false} />
+
+      {/* Nested Routes */}
       <Routes>
         <Route
-          path="/admin/users"
+          path="/"
           element={
             <ProtectedRoute>
-              <UsersList />
+              <SharedLayout />
             </ProtectedRoute>
           }
-        />
-        <Route
-          path="/admin/bookings"
-          element={
-            <ProtectedRoute>
-              <BookingsList />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/notifications"
-          element={
-            <ProtectedRoute>
-              <Notifications />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/book-bikes"
-          element={
-            <ProtectedRoute>
-              <BookBikes />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/book-bus"
-          element={
-            <ProtectedRoute>
-              <BookBus />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/book-truck"
-          element={
-            <ProtectedRoute>
-              <BookTruck />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/interstate-dispatch"
-          element={
-            <ProtectedRoute>
-              <InterstateDispatch />
-            </ProtectedRoute>
-          }
-        />
+        >
+          <Route index element={<Home />} />
+          <Route path="/book-bikes" element={<BookBikes />} />
+          <Route path="/book-bus" element={<BookBus />} />
+          <Route path="/book-truck" element={<BookTruck />} />
+          <Route path="/interstate-dispatch" element={<InterstateDispatch />} />
+          <Route path="profile" element={<Home />} />
+          <Route path="/admin/users" element={<UsersList />} />
+          <Route path="/admin/bookings" element={<BookingsList />} />
+          <Route path="/notifications" element={<Notifications />} />
+        </Route>
         <Route
           path="/home"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/smilga"
           element={
             <ProtectedRoute>
               <SharedLayout />

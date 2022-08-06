@@ -6,7 +6,7 @@ import Wrapper from "../assets/wrappers/BigSidebar";
 import React from "react";
 
 const BigSidebar = () => {
-  const { showSidebar, toggleSidebar } = useAppContext();
+  const { showSidebar } = useAppContext();
   // const showSidebar = false;
   return (
     <Wrapper>
@@ -19,7 +19,7 @@ const BigSidebar = () => {
           <header>
             <h3>SLS</h3>
           </header>
-          <Navlinks toggleSidebar={toggleSidebar} />
+          <Navlinks />
         </div>
       </div>
     </Wrapper>

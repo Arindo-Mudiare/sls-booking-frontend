@@ -1,14 +1,13 @@
 import React from "react";
-import Layout from "../components/Layout";
-import FormTemplate from "../components/FormTemplate";
+import { FormTemplate, LayoutStrip } from "../components";
 
 function BookTruck() {
   return (
-    <Layout>
+    <LayoutStrip>
       <h1 className="card-title fade-title">Book Truck Service</h1>
       <hr />
       <FormTemplate isTruck={true} />
-    </Layout>
+    </LayoutStrip>
   );
 }
 

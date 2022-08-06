@@ -1,38 +1,39 @@
-import { IoBarChartSharp } from "react-icons/io5";
-import { MdQueryStats } from "react-icons/md";
-import { FaWpforms } from "react-icons/fa";
-import { ImProfile } from "react-icons/im";
+import { FaBus } from "react-icons/fa";
+import { FaUserClock } from "react-icons/fa";
+import { MdDirectionsBike } from "react-icons/md";
+import { FaTruck } from "react-icons/fa";
+import { FaTruckMonster } from "react-icons/fa";
 
 const links = [
   {
     id: 1,
     text: "Your Bookings",
-    path: "/smilga",
-    icon: "ri-user-line",
+    path: "/home",
+    icon: <FaUserClock />,
   },
   {
     id: 2,
     text: "Book Bike Service",
     path: "/book-bikes",
-    icon: "ri-motorbike-fill",
+    icon: <MdDirectionsBike />,
   },
   {
     id: 3,
     text: "Book Bus Service",
     path: "/book-bus",
-    icon: "ri-bus-fill",
-  },
-  {
-    id: 3,
-    text: "Book Truck Service",
-    path: "/book-truck",
-    icon: "ri-truck-fill",
+    icon: <FaBus />,
   },
   {
     id: 4,
+    text: "Book Truck Service",
+    path: "/book-truck",
+    icon: <FaTruck />,
+  },
+  {
+    id: 5,
     text: "Interstate Dispatch",
     path: "/interstate-dispatch",
-    icon: "ri-truck-line",
+    icon: <FaTruckMonster />,
   },
 ];
 

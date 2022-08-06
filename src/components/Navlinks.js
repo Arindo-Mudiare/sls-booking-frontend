@@ -1,10 +1,15 @@
 import links from "../utils/links";
+import adminLinks from "../utils/adminLinks";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NavLinks = ({ toggleSidebar }) => {
+  const { user } = useSelector((state) => state.user);
+  const menuToBeRendered = user?.isSuperAdmin ? adminLinks : links;
+
   return (
     <div className="nav-links">
-      {links.map((link) => {
+      {menuToBeRendered.map((link) => {
         const { text, path, id, icon } = link;
 
         return (

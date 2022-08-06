@@ -39,7 +39,7 @@
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 2px gray;
-    height: 82vh;
+    /* height: 82vh; */
     width: 100%;
     padding: 15px;
 }
@@ -87,9 +87,11 @@
 }
 
 .form-container{ 
+    padding-top: 0;
    margin-right: auto;
    margin-left: auto;
    width: 80%;
+   
 }
 
 .form-effizi {

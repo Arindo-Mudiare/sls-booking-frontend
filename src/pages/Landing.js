@@ -17,8 +17,8 @@ const Landing = () => {
               SLS <span>Booking</span> Portal
             </h1>
             <p>
-              Login or register with your details and patronize the dopest
-              booking service in africa and give testimonies
+              Login or register with your details and patronize the best booking
+              service in africa and give testimonies
             </p>
             <Link to="/login" className="btn btn-hero">
               Login/Register

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/Layout";
+import LayoutStrip from "../../components/LayoutStrip";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../redux/alertsSlice";
@@ -48,23 +48,23 @@ function UsersList() {
       render: (record, text) => moment(record.createdAt).format("DD-MM-YYYY"),
     },
 
-    {
-      title: "Actions",
-      dataIndex: "actions",
-      render: (text, record) => (
-        <div className="d-flex">
-          <h1 className="anchor">Block</h1>
-        </div>
-      ),
-    },
+    // {
+    //   title: "Actions",
+    //   dataIndex: "actions",
+    //   render: (text, record) => (
+    //     <div className="d-flex">
+    //       <h1 className="anchor">Block</h1>
+    //     </div>
+    //   ),
+    // },
   ];
 
   return (
-    <Layout>
+    <LayoutStrip>
       <h1 className="page-header">Users List</h1>
       <hr />
       <Table columns={columns} dataSource={users} />
-    </Layout>
+    </LayoutStrip>
   );
 }
 

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/Layout";
+import LayoutStrip from "../../components/LayoutStrip";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../redux/alertsSlice";
 import { Table } from "antd";
-import moment from "moment";
 import * as dayjs from "dayjs";
 
 function BookingsList() {
@@ -81,7 +80,7 @@ function BookingsList() {
       dataIndex: "description",
     },
     {
-      title: "Quantity",
+      title: "Qty",
       dataIndex: "quantity",
     },
 
@@ -96,38 +95,38 @@ function BookingsList() {
       sorter: (a, b) => a.inputOffer - b.inputOffer,
     },
     {
-      title: "Date of Booking",
+      title: "Booking-Date",
       dataIndex: "bookingDate",
       sorter: (a, b) => a.bookingDate - b.bookingDate,
-      // render: (record, dataIndex) =>
-      //   dayjs(record.dataIndex).format("DD-MMMM-YYYY"),
+      render: (record, dataIndex) =>
+        dayjs(record.dataIndex).format("DD-MMMM-YYYY"),
     },
-    {
-      title: "Status of Booking",
-      dataIndex: "status",
-    },
-    {
-      title: "Actions",
-      dataIndex: "actions",
-      render: (text, record) => (
-        <div className="d-flex">
-          {record.status === "pending" && <h1 className="anchor">Approve</h1>}
-          {record.status === "approved" && <h1 className="anchor">Reject</h1>}
-        </div>
-      ),
-    },
+    // {
+    //   title: "Status of Booking",
+    //   dataIndex: "status",
+    // },
+    // {
+    //   title: "Actions",
+    //   dataIndex: "actions",
+    //   render: (text, record) => (
+    //     <div className="d-flex">
+    //       {record.status === "pending" && <h1 className="anchor">Approve</h1>}
+    //       {record.status === "approved" && <h1 className="anchor">Reject</h1>}
+    //     </div>
+    //   ),
+    // },
   ];
 
   return (
-    <Layout>
+    <LayoutStrip>
       {bookings.map((booking) =>
         console.log(dayjs(booking.bookingDate).format("DD-MMMM-YYYY"))
       )}
 
-      <h1 className="page-header">Bookings List</h1>
+      <h3 className="page-header">Bookings List</h3>
       <hr />
       <Table columns={columns} dataSource={bookings} size="small" />
-    </Layout>
+    </LayoutStrip>
   );
 }
 

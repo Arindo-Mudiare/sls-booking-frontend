@@ -49,7 +49,7 @@ function FormTemplate(props) {
         onFinish={onFinish}
         initialValues={{ remember: true }}
       >
-        <h1 className="card-title card-mgy">Kindly Provide Details Below...</h1>
+        {/* <h1 className="card-title card-mgy">Kindly Provide Details Below...</h1> */}
         <Row gutter={20}>
           <Col span={8} xs={24} sm={24} lg={8}>
             <Form.Item

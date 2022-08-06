@@ -1,14 +1,13 @@
 import React from "react";
-import Layout from "../components/Layout";
-import FormTemplate from "../components/FormTemplate";
+import { FormTemplate, LayoutStrip } from "../components";
 
 function InterstateDispatch() {
   return (
-    <Layout>
+    <LayoutStrip>
       <h1 className="card-title fade-title">Interstate Dispatch Booking</h1>
       <hr />
       <FormTemplate isTruck={false} />
-    </Layout>
+    </LayoutStrip>
   );
 }
 
