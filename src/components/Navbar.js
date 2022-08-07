@@ -34,6 +34,7 @@ const Navbar = () => {
               <Badge
                 count={user?.unseenNotifications.length}
                 onClick={() => navigate("/notifications")}
+                className="mx-4"
               >
                 <i className="ri-notification-3-line header-action-icon px-2"></i>
               </Badge>
@@ -45,7 +46,7 @@ const Navbar = () => {
             onClick={() => setShowLogout(!showLogout)}
           >
             <FaUserCircle />
-            Welcome {user?.name}
+            {user?.name}
             <FaCaretDown />
           </button>
           <div className={showLogout ? "dropdown show-dropdown" : "dropdown"}>

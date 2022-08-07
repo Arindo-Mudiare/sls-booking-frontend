@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import LayoutStrip from "../components/LayoutStrip";
+import LayoutStrip from "../../components/LayoutStrip";
 
 function Home() {
   const getData = async () => {
@@ -14,7 +14,7 @@ function Home() {
           },
         }
       );
-      console.log(response);
+      //   console.log(response);
     } catch (error) {}
   };
 
@@ -24,7 +24,7 @@ function Home() {
 
   return (
     <LayoutStrip>
-      <h1>Your Bookings</h1>
+      <h3>Admin Booking Stats</h3>
     </LayoutStrip>
   );
 }

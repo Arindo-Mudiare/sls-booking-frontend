@@ -119,9 +119,9 @@ function BookingsList() {
 
   return (
     <LayoutStrip>
-      {bookings.map((booking) =>
+      {/* {bookings.map((booking) =>
         console.log(dayjs(booking.bookingDate).format("DD-MMMM-YYYY"))
-      )}
+      )} */}
 
       <h3 className="page-header">Bookings List</h3>
       <hr />

@@ -11,6 +11,7 @@ const Wrapper = styled.main`
   }
   .logo {
     height: 100px !important;
+    padding-top: 30px !important;
   }
   .sls-red {
     color: red !important;

@@ -2,6 +2,7 @@ import React from "react";
 import "antd/dist/antd.css";
 import ReactDOM from "react-dom/client";
 import "normalize.css";
+import "./layout.css";
 import "./smilga.css";
 import "./index.css";
 import { Provider } from "react-redux";

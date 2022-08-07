@@ -5,6 +5,8 @@ import Navbar from "./Navbar";
 import LayoutStrip from "./LayoutStrip";
 import Layout from "./LayoutStrip";
 import SmallSidebar from "./SmallSidebar";
+import BookingInfo from "./BookingInfo";
+import BookingContainer from "./BookingContainer";
 
 export {
   FormTemplate,
@@ -14,4 +16,6 @@ export {
   Navbar,
   BigSidebar,
   SmallSidebar,
+  BookingInfo,
+  BookingContainer,
 };

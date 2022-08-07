@@ -18,7 +18,7 @@ function Login() {
         toast.success(response.data.message);
         toast("Redirecting to booking page");
         localStorage.setItem("token", response.data.data);
-        navigate("/home");
+        navigate("/");
       } else {
         toast.error(response.data.message);
       }

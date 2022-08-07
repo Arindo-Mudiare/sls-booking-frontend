@@ -6,18 +6,26 @@ import Register from "./pages/Register";
 import { useSelector } from "react-redux";
 import ProtectedRoute from "./components/protectedRoute";
 import Notifications from "./pages/Notifications";
-import UsersList from "./pages/Admin/UsersList";
-import BookingsList from "./pages/Admin/BookingsList";
+import {
+  UsersList,
+  BookingsList,
+  BookingStats,
+  AdminProfile,
+} from "./pages/Admin";
 import Landing from "./pages/Landing";
+
 import {
   Error,
   BookBikes,
   Home,
   BookBus,
   BookTruck,
+  YourBookings,
   InterstateDispatch,
+  UserBookings,
 } from "./pages";
 import SharedLayout from "./pages/SharedLayout";
+import Profile from "./pages/Admin/AdminProfile";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -41,7 +49,7 @@ function App() {
             </ProtectedRoute>
           }
         >
-          <Route index element={<Home />} />
+          <Route index element={<UserBookings />} />
           <Route path="/book-bikes" element={<BookBikes />} />
           <Route path="/book-bus" element={<BookBus />} />
           <Route path="/book-truck" element={<BookTruck />} />
@@ -49,16 +57,11 @@ function App() {
           <Route path="profile" element={<Home />} />
           <Route path="/admin/users" element={<UsersList />} />
           <Route path="/admin/bookings" element={<BookingsList />} />
+          <Route path="/admin/booking-stats" element={<BookingStats />} />
+          <Route path="/admin/profile/:userId" element={<AdminProfile />} />
           <Route path="/notifications" element={<Notifications />} />
         </Route>
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoute>
-              <SharedLayout />
-            </ProtectedRoute>
-          }
-        />
+
         <Route path="/" element={<Landing />} />
         <Route path="/landing" element={<Landing />} />
         <Route path="/login" element={<Login />} />

@@ -8,7 +8,7 @@ const links = [
   {
     id: 1,
     text: "Your Bookings",
-    path: "/home",
+    path: "/",
     icon: <FaUserClock />,
   },
   {

@@ -26,6 +26,10 @@ label {
     margin: 10px 0 !important;
 }
 
+.ant-badge {
+    font-size: 25px;
+}
+
 /* common styling */
 .spinner-parent {
     display: flex;
@@ -48,6 +52,13 @@ label {
 .page-title {
     font-size: 25px;
     color: rgba(0, 0, 0, 0.544);
+}
+
+header h3 {
+    color: #fff;
+}
+header h3 span{
+    font-size: 1rem;
 }
 
 .fade-title{

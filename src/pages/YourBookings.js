@@ -2,18 +2,14 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import LayoutStrip from "../components/LayoutStrip";
 
-function Home() {
+function YourBookings() {
   const getData = async () => {
     try {
-      const response = await axios.post(
-        "/api/user/get-user-info-by-id",
-        {},
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        }
-      );
+      const response = await axios.get("/api/user/get-user-bookings", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
       console.log(response);
     } catch (error) {}
   };
@@ -29,4 +25,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default YourBookings;

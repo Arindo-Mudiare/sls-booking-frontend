@@ -61,7 +61,7 @@ function UsersList() {
 
   return (
     <LayoutStrip>
-      <h1 className="page-header">Users List</h1>
+      <h3 className="page-header">Users List</h3>
       <hr />
       <Table columns={columns} dataSource={users} />
     </LayoutStrip>

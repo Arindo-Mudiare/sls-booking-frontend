@@ -7,7 +7,9 @@ import InterstateDispatch from "./InterstateDispatch";
 import Error from "./Error";
 import Register from "./Register";
 import Notifications from "./Notifications";
+import YourBookings from "./YourBookings";
 import ProtectedRoute from "../components/protectedRoute";
+import UserBookings from "./UserBookings";
 
 export {
   BookBikes,
@@ -20,4 +22,6 @@ export {
   Error,
   Register,
   ProtectedRoute,
+  YourBookings,
+  UserBookings,
 };

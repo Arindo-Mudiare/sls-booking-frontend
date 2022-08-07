@@ -7,7 +7,7 @@ const links = [
   {
     id: 1,
     text: "Booking Summary",
-    path: "/home",
+    path: "/admin/booking-stats",
     icon: <FaUserClock />,
   },
   {
