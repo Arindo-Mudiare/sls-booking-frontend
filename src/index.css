@@ -99,6 +99,10 @@ header h3 span{
     background-color: #178cb7;
 }
 
+.logo {
+    height: 200px;
+}
+
 .authentication-form{
     width: 400px;
 }
@@ -144,6 +148,9 @@ width: max-content !important;
     .card-mgy {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+.logo {
+    height: 100px;
 }
 .anchor {
     color: #178cb7 !important;

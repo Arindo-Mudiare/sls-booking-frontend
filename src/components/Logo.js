@@ -1,4 +1,4 @@
-import logo from "../assets/svg/sls-logo-sm.png";
+import logo from "../assets/svg/result.svg";
 
 const Logo = () => {
   return <img src={logo} alt="SLS" className="logo" />;

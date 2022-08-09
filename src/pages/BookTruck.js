@@ -6,7 +6,7 @@ function BookTruck() {
     <LayoutStrip>
       <h1 className="card-title fade-title">Book Truck Service</h1>
       <hr />
-      <FormTemplate isTruck={true} />
+      <FormTemplate isTruck={true} isBus={false} />
     </LayoutStrip>
   );
 }

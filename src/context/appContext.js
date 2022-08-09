@@ -25,6 +25,16 @@ import {
   EDIT_JOB_BEGIN,
   EDIT_JOB_SUCCESS,
   EDIT_JOB_ERROR,
+  CREATE_BOOKING_BEGIN,
+  CREATE_BOOKING_SUCCESS,
+  CREATE_BOOKING_ERROR,
+  GET_BOOKINGS_BEGIN,
+  GET_BOOKINGS_SUCCESS,
+  SET_EDIT_BOOKING,
+  DELETE_BOOKING_BEGIN,
+  EDIT_BOOKING_BEGIN,
+  EDIT_BOOKING_SUCCESS,
+  EDIT_BOOKING_ERROR,
   SHOW_STATS_BEGIN,
   SHOW_STATS_SUCCESS,
   CLEAR_FILTERS,
@@ -46,6 +56,7 @@ const initialState = {
   showSidebar: false,
   isEditing: false,
   editJobId: "",
+  editBookingId: "",
   position: "",
   company: "",
   jobLocation: userLocation || "",
@@ -54,7 +65,9 @@ const initialState = {
   statusOptions: ["interview", "declined", "pending"],
   status: "pending",
   jobs: [],
+  bookings: [],
   totalJobs: 0,
+  totalBookings: 0,
   numOfPages: 1,
   page: 1,
   stats: {},
@@ -75,6 +88,12 @@ const AppProvider = ({ children }) => {
   const authFetch = axios.create({
     baseURL: "/api/v1",
   });
+  const authFetchUser = axios.create({
+    baseURL: "/api/user",
+  });
+  const authFetchAdmin = axios.create({
+    baseURL: "/api/admin",
+  });
   // request
 
   authFetch.interceptors.request.use(
@@ -89,6 +108,30 @@ const AppProvider = ({ children }) => {
   // response
 
   authFetch.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      // console.log(error.response)
+      if (error.response.status === 401) {
+        logoutUser();
+      }
+      return Promise.reject(error);
+    }
+  );
+
+  authFetchUser.interceptors.request.use(
+    (config) => {
+      config.headers.common["Authorization"] = `Bearer ${state.token}`;
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+  // response
+
+  authFetchUser.interceptors.response.use(
     (response) => {
       return response;
     },
@@ -205,6 +248,29 @@ const AppProvider = ({ children }) => {
     }
     clearAlert();
   };
+  // Create Booking
+  const createBooking = async () => {
+    dispatch({ type: CREATE_BOOKING_BEGIN });
+    try {
+      const { position, company, jobLocation, jobType, status } = state;
+      await authFetch.post("/bookings", {
+        position,
+        company,
+        jobLocation,
+        jobType,
+        status,
+      });
+      dispatch({ type: CREATE_BOOKING_SUCCESS });
+      dispatch({ type: CLEAR_VALUES });
+    } catch (error) {
+      if (error.response.status === 401) return;
+      dispatch({
+        type: CREATE_BOOKING_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+    }
+    clearAlert();
+  };
 
   const getJobs = async () => {
     const { page, search, searchStatus, searchType, sort } = state;
@@ -231,9 +297,94 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  // get bookings function
+  const getBookings = async () => {
+    const { page, search, searchStatus, searchType, sort } = state;
+
+    let url = `/bookings?page=${page}&status=${searchStatus}&jobType=${searchType}&sort=${sort}`;
+    if (search) {
+      url = url + `&search=${search}`;
+    }
+    dispatch({ type: GET_BOOKINGS_BEGIN });
+    try {
+      const { data } = await authFetch(url);
+      const { bookings, totalBookings, numOfPages } = data;
+      dispatch({
+        type: GET_BOOKINGS_SUCCESS,
+        payload: {
+          bookings,
+          totalBookings,
+          numOfPages,
+        },
+      });
+    } catch (error) {
+      logoutUser();
+    }
+    clearAlert();
+  };
+
   const setEditJob = (id) => {
     dispatch({ type: SET_EDIT_JOB, payload: { id } });
   };
+  // Set edit Bookings
+  const setEditBooking = (id) => {
+    dispatch({ type: SET_EDIT_BOOKING, payload: { id } });
+  };
+
+  // edit Booking
+  const editBooking = async () => {
+    dispatch({ type: EDIT_BOOKING_BEGIN });
+
+    try {
+      const { position, company, jobLocation, jobType, status } = state;
+      await authFetch.patch(`/booking/${state.editBookingId}`, {
+        company,
+        position,
+        jobLocation,
+        jobType,
+        status,
+      });
+      dispatch({ type: EDIT_BOOKING_SUCCESS });
+      dispatch({ type: CLEAR_VALUES });
+    } catch (error) {
+      if (error.response.status === 401) return;
+      dispatch({
+        type: EDIT_BOOKING_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+    }
+    clearAlert();
+  };
+
+  // delete booking
+  const deleteBooking = async (bookingId) => {
+    dispatch({ type: DELETE_BOOKING_BEGIN });
+    try {
+      await authFetch.delete(`/bookings/${bookingId}`);
+      getBookings();
+    } catch (error) {
+      logoutUser();
+    }
+  };
+  const showBkStats = async () => {
+    dispatch({ type: SHOW_STATS_BEGIN });
+    try {
+      const { data } = await authFetch("/bookings/stats");
+      dispatch({
+        type: SHOW_STATS_SUCCESS,
+        payload: {
+          stats: data.defaultStats,
+          monthlyApplications: data.monthlyApplications,
+        },
+      });
+    } catch (error) {
+      logoutUser();
+    }
+    clearAlert();
+  };
+
+  // end booking functions
+
   const editJob = async () => {
     dispatch({ type: EDIT_JOB_BEGIN });
 
@@ -300,10 +451,15 @@ const AppProvider = ({ children }) => {
         handleChange,
         clearValues,
         createJob,
+        createBooking,
         getJobs,
+        getBookings,
         setEditJob,
+        setEditBooking,
         deleteJob,
+        deleteBooking,
         editJob,
+        editBooking,
         showStats,
         clearFilters,
         changePage,

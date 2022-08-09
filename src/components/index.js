@@ -7,9 +7,11 @@ import Layout from "./LayoutStrip";
 import SmallSidebar from "./SmallSidebar";
 import BookingInfo from "./BookingInfo";
 import BookingContainer from "./BookingContainer";
+import FormEdit from "./FormEdit";
 
 export {
   FormTemplate,
+  FormEdit,
   Layout,
   LayoutStrip,
   Logo,

@@ -11,16 +11,16 @@ import {
   UPDATE_USER_ERROR,
   HANDLE_CHANGE,
   CLEAR_VALUES,
-  CREATE_JOB_BEGIN,
-  CREATE_JOB_SUCCESS,
-  CREATE_JOB_ERROR,
-  GET_JOBS_BEGIN,
-  GET_JOBS_SUCCESS,
-  SET_EDIT_JOB,
-  DELETE_JOB_BEGIN,
-  EDIT_JOB_BEGIN,
-  EDIT_JOB_SUCCESS,
-  EDIT_JOB_ERROR,
+  CREATE_BOOKING_BEGIN,
+  CREATE_BOOKING_SUCCESS,
+  CREATE_BOOKING_ERROR,
+  GET_BOOKINGS_BEGIN,
+  GET_BOOKINGS_SUCCESS,
+  SET_EDIT_BOOKING,
+  DELETE_BOOKING_BEGIN,
+  EDIT_BOOKING_BEGIN,
+  EDIT_BOOKING_SUCCESS,
+  EDIT_BOOKING_ERROR,
   SHOW_STATS_BEGIN,
   SHOW_STATS_SUCCESS,
   CLEAR_FILTERS,
@@ -57,7 +57,7 @@ const reducer = (state, action) => {
       token: action.payload.token,
       user: action.payload.user,
       userLocation: action.payload.location,
-      jobLocation: action.payload.location,
+      bookingLocation: action.payload.location,
       showAlert: true,
       alertType: "success",
       alertText: action.payload.alertText,
@@ -122,7 +122,7 @@ const reducer = (state, action) => {
   if (action.type === CLEAR_VALUES) {
     const initialState = {
       isEditing: false,
-      editJobId: "",
+      editBookingId: "",
       position: "",
       company: "",
       jobLocation: state.userLocation,
@@ -135,20 +135,20 @@ const reducer = (state, action) => {
       ...initialState,
     };
   }
-  if (action.type === CREATE_JOB_BEGIN) {
+  if (action.type === CREATE_BOOKING_BEGIN) {
     return { ...state, isLoading: true };
   }
 
-  if (action.type === CREATE_JOB_SUCCESS) {
+  if (action.type === CREATE_BOOKING_SUCCESS) {
     return {
       ...state,
       isLoading: false,
       showAlert: true,
       alertType: "success",
-      alertText: "New Job Created!",
+      alertText: "New Booking Created!",
     };
   }
-  if (action.type === CREATE_JOB_ERROR) {
+  if (action.type === CREATE_BOOKING_ERROR) {
     return {
       ...state,
       isLoading: false,
@@ -157,25 +157,27 @@ const reducer = (state, action) => {
       alertText: action.payload.msg,
     };
   }
-  if (action.type === GET_JOBS_BEGIN) {
+  if (action.type === GET_BOOKINGS_BEGIN) {
     return { ...state, isLoading: true, showAlert: false };
   }
-  if (action.type === GET_JOBS_SUCCESS) {
+  if (action.type === GET_BOOKINGS_SUCCESS) {
     return {
       ...state,
       isLoading: false,
-      jobs: action.payload.jobs,
-      totalJobs: action.payload.totalJobs,
+      bookings: action.payload.bookings,
+      totalBookings: action.payload.totalBookings,
       numOfPages: action.payload.numOfPages,
     };
   }
-  if (action.type === SET_EDIT_JOB) {
-    const job = state.jobs.find((job) => job._id === action.payload.id);
-    const { _id, position, company, jobLocation, jobType, status } = job;
+  if (action.type === SET_EDIT_BOOKING) {
+    const booking = state.bookings.find(
+      (booking) => booking._id === action.payload.id
+    );
+    const { _id, position, company, jobLocation, jobType, status } = booking;
     return {
       ...state,
       isEditing: true,
-      editJobId: _id,
+      editBookingId: _id,
       position,
       company,
       jobLocation,
@@ -183,25 +185,25 @@ const reducer = (state, action) => {
       status,
     };
   }
-  if (action.type === DELETE_JOB_BEGIN) {
+  if (action.type === DELETE_BOOKING_BEGIN) {
     return { ...state, isLoading: true };
   }
-  if (action.type === EDIT_JOB_BEGIN) {
+  if (action.type === EDIT_BOOKING_BEGIN) {
     return {
       ...state,
       isLoading: true,
     };
   }
-  if (action.type === EDIT_JOB_SUCCESS) {
+  if (action.type === EDIT_BOOKING_SUCCESS) {
     return {
       ...state,
       isLoading: false,
       showAlert: true,
       alertType: "success",
-      alertText: "Job Updated!",
+      alertText: "Booking Updated!",
     };
   }
-  if (action.type === EDIT_JOB_ERROR) {
+  if (action.type === EDIT_BOOKING_ERROR) {
     return {
       ...state,
       isLoading: false,

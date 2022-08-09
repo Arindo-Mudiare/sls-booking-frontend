@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { DatePicker, Select, Button, Col, Form, Input, Row } from "antd";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { hideLoading, showLoading } from "../redux/alertsSlice";
 import toast from "react-hot-toast";
 import axios from "axios";
 
 function FormTemplate(props) {
+  const params = useParams();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
+  const [booking, setBooking] = useState(null);
   const navigate = useNavigate();
 
   const isTruck = props.isTruck;
@@ -42,13 +44,42 @@ function FormTemplate(props) {
     }
   };
 
+  const getBookingData = async () => {
+    try {
+      dispatch(showLoading());
+      const response = await axios.post(
+        "/get-booking-info-by-id",
+        {
+          bookingId: params.bookingId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      dispatch(hideLoading());
+      if (response.data.success) {
+        setBooking(response.data.data);
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch(hideLoading());
+    }
+  };
+
+  useEffect(() => {
+    getBookingData();
+  }, []);
+
   return (
     <div className="form-container">
       <Form
         layout="vertical"
         className="form-effizi"
         onFinish={onFinish}
-        initialValues={{ remember: true }}
+        initialValues={booking}
       >
         {/* <h1 className="card-title card-mgy">Kindly Provide Details Below...</h1> */}
         <Row gutter={20}>

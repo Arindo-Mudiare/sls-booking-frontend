@@ -14,11 +14,13 @@ const Landing = () => {
           {/* info div */}
           <div className="info">
             <h1 className="sls-red">
-              SLS <span>Booking</span> Portal
+              Welcome to<br></br> <span>SLS Portation</span>
             </h1>
             <p>
-              Login or register with your details and patronize the best booking
-              service in africa and give testimonies
+              Your one stop logistics service for you.<br></br>
+              Your Dispatch and Haulage needs made easier, better, faster to
+              your satisfaction. <br />
+              <span className="sls-red">SLSPortation…..Fast Delivery</span>
             </p>
             <Link to="/login" className="btn btn-hero">
               Login/Register

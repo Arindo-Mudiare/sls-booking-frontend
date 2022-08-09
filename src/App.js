@@ -20,7 +20,7 @@ import {
   Home,
   BookBus,
   BookTruck,
-  YourBookings,
+  EditBooking,
   InterstateDispatch,
   UserBookings,
 } from "./pages";
@@ -59,6 +59,7 @@ function App() {
           <Route path="/admin/bookings" element={<BookingsList />} />
           <Route path="/admin/booking-stats" element={<BookingStats />} />
           <Route path="/admin/profile/:userId" element={<AdminProfile />} />
+          <Route path="/edit-booking/:bookingId" element={<EditBooking />} />
           <Route path="/notifications" element={<Notifications />} />
         </Route>
 
