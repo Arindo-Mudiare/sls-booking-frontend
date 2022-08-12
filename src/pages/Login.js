@@ -18,7 +18,9 @@ function Login() {
         toast.success(response.data.message);
         toast("Redirecting to booking page");
         localStorage.setItem("token", response.data.data);
-        navigate("/");
+        values.email === "slsadmin@slsportation.com"
+          ? navigate("/admin/bookings")
+          : navigate("/");
       } else {
         toast.error(response.data.message);
       }

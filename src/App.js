@@ -62,7 +62,7 @@ function App() {
           <Route path="/admin/booking-stats" element={<BookingStats />} />
           <Route path="/admin/profile/:userId" element={<AdminProfile />} />
           <Route path="/edit-booking/:bookingId" element={<EditBooking />} />
-          <Route path="/add-job" element={<EditBooking />} />
+          <Route path="/add-job/:bookingId" element={<EditBooking />} />
           <Route path="/notifications" element={<Notifications />} />
         </Route>
 
@@ -71,10 +71,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route
-          path="/password-reset/forgot/:token"
-          element={<PasswordReset />}
-        />
+        <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
