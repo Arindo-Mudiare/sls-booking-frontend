@@ -47,6 +47,9 @@ function Login() {
             <Link to="/register" className="anchor">
               Not Registered yet? Click here to Register
             </Link>
+            <Link to="/forgot-password" className="anchor mt-2">
+              Forgot password?
+            </Link>
           </div>
         </Form>
       </div>

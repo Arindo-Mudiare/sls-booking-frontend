@@ -6,6 +6,8 @@ import Register from "./pages/Register";
 import { useSelector } from "react-redux";
 import ProtectedRoute from "./components/protectedRoute";
 import Notifications from "./pages/Notifications";
+import ForgotPassword from "./components/ForgotPassword";
+import PasswordReset from "./components/PasswordReset";
 import {
   UsersList,
   BookingsList,
@@ -67,6 +69,8 @@ function App() {
         <Route path="/landing" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/forgot/:token" element={<PasswordReset />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
