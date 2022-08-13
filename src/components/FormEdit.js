@@ -6,7 +6,7 @@ import { hideLoading, showLoading } from "../redux/alertsSlice";
 import toast from "react-hot-toast";
 import axios from "axios";
 
-function FormTemplate(props) {
+function FormEdit(props) {
   const params = useParams();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
@@ -20,10 +20,10 @@ function FormTemplate(props) {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/user/submit-new-booking",
+        "/api/user/update-current-booking",
         {
           ...values,
-          userId: user._id,
+          bookingId: booking._id,
         },
         {
           headers: {
@@ -48,7 +48,7 @@ function FormTemplate(props) {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/get-booking-info-by-id",
+        "/api/user/get-booking-info-by-id",
         {
           bookingId: params.bookingId,
         },
@@ -72,6 +72,8 @@ function FormTemplate(props) {
   useEffect(() => {
     getBookingData();
   }, []);
+
+  console.log(booking);
 
   return (
     <div className="form-container">
@@ -139,17 +141,7 @@ function FormTemplate(props) {
                 },
               ]}
             >
-              {isTruck || isBus ? (
-                <Input placeholder="Pick up Address(From)" />
-              ) : (
-                <Select>
-                  <Select.Option value="Abuja">Abuja</Select.Option>
-                  <Select.Option value="Port Harcourt">
-                    Port Harcourt
-                  </Select.Option>
-                  <Select.Option value="Lagos">Lagos</Select.Option>
-                </Select>
-              )}
+              <Input placeholder="Pick up Address(From)" />
             </Form.Item>
           </Col>
           <Col span={8} xs={24} sm={24} lg={8}>
@@ -164,17 +156,7 @@ function FormTemplate(props) {
                 },
               ]}
             >
-              {isTruck || isBus ? (
-                <Input placeholder="Pick up Address(From)" />
-              ) : (
-                <Select>
-                  <Select.Option value="Abuja">Abuja</Select.Option>
-                  <Select.Option value="Port Harcourt">
-                    Port Harcourt
-                  </Select.Option>
-                  <Select.Option value="Lagos">Lagos</Select.Option>
-                </Select>
-              )}
+              <Input placeholder="Pick up Address(From)" />
             </Form.Item>
           </Col>
           <Col span={8} xs={24} sm={24} lg={8}>
@@ -258,9 +240,13 @@ function FormTemplate(props) {
             >
               <Input
                 placeholder={
-                  isTruck ? "Please Input your Offer" : "Not Available"
+                  booking?.bookingType === "Truck Booking"
+                    ? "Please Input your Offer"
+                    : "Not Available"
                 }
-                disabled={isTruck ? false : true}
+                disabled={
+                  booking?.bookingType === "Truck Booking" ? false : true
+                }
               />
             </Form.Item>
           </Col>
@@ -290,4 +276,4 @@ function FormTemplate(props) {
   );
 }
 
-export default FormTemplate;
+export default FormEdit;

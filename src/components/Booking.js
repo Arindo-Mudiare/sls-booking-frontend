@@ -53,7 +53,11 @@ const Booking = ({
         </div>
         <footer>
           <div className="actions">
-            <Link to="/add-job" className="btn edit-btn" onClick={(f) => f}>
+            <Link
+              to={`/edit-booking/${_id}`}
+              className="btn edit-btn"
+              onClick={(f) => f}
+            >
               Edit
             </Link>
             <button type="button" className="btn delete-btn" onClick={(f) => f}>

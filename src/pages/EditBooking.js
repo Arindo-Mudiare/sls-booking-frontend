@@ -6,7 +6,7 @@ function EditBooking() {
     <LayoutStrip>
       <h1 className="card-title fade-title">Edit Booking</h1>
       <hr />
-      <FormEdit isTruck={false} isBus={false} />
+      <FormEdit isTruck={true} isBus={false} />
     </LayoutStrip>
   );
 }
