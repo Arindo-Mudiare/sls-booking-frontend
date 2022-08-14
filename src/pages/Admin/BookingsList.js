@@ -3,12 +3,15 @@ import LayoutStrip from "../../components/LayoutStrip";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../redux/alertsSlice";
-import { Table } from "antd";
+import { Button, Table, Modal, Input } from "antd";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import * as dayjs from "dayjs";
 
 function BookingsList() {
   const [bookings, setBookings] = useState([]);
   const dispatch = useDispatch();
+  const [isEditing, setIsEditing] = useState(false);
+  const [editingBooking, setEditingBooking] = useState(null);
 
   const getBookingsData = async () => {
     try {
@@ -101,6 +104,27 @@ function BookingsList() {
       render: (record, dataIndex) =>
         dayjs(record.dataIndex).format("DD-MMMM-YYYY"),
     },
+    {
+      title: "Actions",
+      render: (record) => {
+        return (
+          <>
+            <EditOutlined
+              onClick={() => {
+                onEditBooking(record);
+              }}
+            />
+            <DeleteOutlined
+              onClick={() => {
+                onDeleteBooking(record);
+              }}
+              style={{ color: "red", marginLeft: 12 }}
+            />
+          </>
+        );
+      },
+    },
+
     // {
     //   title: "Status of Booking",
     //   dataIndex: "status",
@@ -117,6 +141,26 @@ function BookingsList() {
     // },
   ];
 
+  const onDeleteBooking = (record) => {
+    Modal.confirm({
+      title: "Are you sure, you want to delete this user's Booking?",
+      okText: "Yes",
+      okType: "danger",
+      onOk: () => {
+        setBookings((pre) => {
+          return pre.filter((booking) => booking.id !== record.id);
+        });
+      },
+    });
+  };
+  const onEditBooking = (record) => {
+    setIsEditing(true);
+    setEditingBooking({ ...record });
+  };
+  const resetEditing = () => {
+    setIsEditing(false);
+    setEditingBooking(null);
+  };
   return (
     <LayoutStrip>
       {/* {bookings.map((booking) =>

@@ -1,9 +1,9 @@
 import { useEffect, useState, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import styles from "./styles.module.css";
+import styles from "./PasswordReset/styles.module.css";
 
-const PasswordReset = () => {
+const PassReset = () => {
   const [validUrl, setValidUrl] = useState(false);
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
@@ -18,7 +18,6 @@ const PasswordReset = () => {
         setValidUrl(true);
       } catch (error) {
         setValidUrl(false);
-        console.log(error);
       }
     };
     verifyUrl();
@@ -43,7 +42,7 @@ const PasswordReset = () => {
       }
     }
   };
-  console.log(validUrl);
+
   return (
     <Fragment>
       {validUrl ? (
@@ -73,4 +72,4 @@ const PasswordReset = () => {
   );
 };
 
-export default PasswordReset;
+export default PassReset;

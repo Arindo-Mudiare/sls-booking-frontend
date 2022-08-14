@@ -30,13 +30,13 @@ function ProtectedRoute(props) {
         // dispatch(reloadUserData(false));
       } else {
         localStorage.clear();
-        navigate("/login");
+        navigate("/landing");
       }
     } catch (error) {
       console.log(error);
       dispatch(hideLoading());
       localStorage.clear();
-      navigate("/login");
+      navigate("/landing");
     }
   };
 
@@ -49,7 +49,7 @@ function ProtectedRoute(props) {
   if (localStorage.getItem("token")) {
     return props.children;
   } else {
-    return <Navigate to="/login" />;
+    return <Navigate to="/landing" />;
   }
 }
 

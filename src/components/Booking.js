@@ -60,9 +60,9 @@ const Booking = ({
             >
               Edit
             </Link>
-            <button type="button" className="btn delete-btn" onClick={(f) => f}>
+            {/* <button type="button" className="btn delete-btn" onClick={(f) => f}>
               Delete
-            </button>
+            </button> */}
           </div>
         </footer>
       </div>

@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/protectedRoute";
 import Notifications from "./pages/Notifications";
 import ForgotPassword from "./components/ForgotPassword";
 import PasswordReset from "./components/PasswordReset";
+import PassReset from "./components/PassReset";
 import {
   UsersList,
   BookingsList,
@@ -62,7 +63,6 @@ function App() {
           <Route path="/admin/booking-stats" element={<BookingStats />} />
           <Route path="/admin/profile/:userId" element={<AdminProfile />} />
           <Route path="/edit-booking/:bookingId" element={<EditBooking />} />
-          <Route path="/add-job/:bookingId" element={<EditBooking />} />
           <Route path="/notifications" element={<Notifications />} />
         </Route>
 

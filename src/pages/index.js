@@ -1,5 +1,5 @@
 import Landing from "./Landing";
-import BookBikes from "./EditBooking";
+import BookBikes from "./BookBikes";
 import BookBus from "./BookBus";
 import BookTruck from "./BookTruck";
 import Home from "./Home";
