@@ -1,9 +1,9 @@
 const supaAdminMenu = [
-  {
-    name: "Booking Summary",
-    path: "/home",
-    icon: "ri-home-7-line",
-  },
+  // {
+  //   name: "Booking Summary",
+  //   path: "/home",
+  //   icon: "ri-home-7-line",
+  // },
   {
     name: "All Bookings",
     path: "/admin/bookings",
