@@ -3,15 +3,15 @@ import LayoutStrip from "../../components/LayoutStrip";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../redux/alertsSlice";
-import { Button, Table, Modal, Input } from "antd";
+import { Table } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import * as dayjs from "dayjs";
 
 function BookingsList() {
   const [bookings, setBookings] = useState([]);
   const dispatch = useDispatch();
-  const [isEditing, setIsEditing] = useState(false);
-  const [editingBooking, setEditingBooking] = useState(null);
+  // const [isEditing, setIsEditing] = useState(false);
+  // const [editingBooking, setEditingBooking] = useState(null);
 
   const getBookingsData = async () => {
     try {
