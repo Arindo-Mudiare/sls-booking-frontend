@@ -15,12 +15,12 @@ const NavLinks = ({ toggleSidebar }) => {
 
   // admin sidebar
   const adminLinks = [
-    {
-      id: 1,
-      text: "Booking Summary",
-      path: "/admin/booking-stats",
-      icon: <FaUserClock />,
-    },
+    // {
+    //   id: 1,
+    //   text: "Booking Summary",
+    //   path: "/admin/booking-stats",
+    //   icon: <FaUserClock />,
+    // },
     {
       id: 2,
       text: "All Bookings",
