@@ -101,29 +101,29 @@ function BookingsList() {
       title: "Booking-Date",
       dataIndex: "bookingDate",
       sorter: (a, b) => a.bookingDate - b.bookingDate,
-      render: (record, dataIndex) =>
-        dayjs(record.dataIndex).format("DD-MMMM-YYYY"),
+      render: (text, record) =>
+        dayjs(record.bookingDate).format("DD-MMMM-YYYY"),
     },
-    {
-      title: "Actions",
-      render: (record) => {
-        return (
-          <>
-            <EditOutlined
-              onClick={() => {
-                onEditBooking(record);
-              }}
-            />
-            <DeleteOutlined
-              onClick={() => {
-                onDeleteBooking(record);
-              }}
-              style={{ color: "red", marginLeft: 12 }}
-            />
-          </>
-        );
-      },
-    },
+    // {
+    //   title: "Actions",
+    //   render: (record) => {
+    //     return (
+    //       <>
+    //         <EditOutlined
+    //           onClick={() => {
+    //             onEditBooking(record);
+    //           }}
+    //         />
+    //         <DeleteOutlined
+    //           onClick={() => {
+    //             onDeleteBooking(record);
+    //           }}
+    //           style={{ color: "red", marginLeft: 12 }}
+    //         />
+    //       </>
+    //     );
+    //   },
+    // },
 
     // {
     //   title: "Status of Booking",
@@ -141,26 +141,26 @@ function BookingsList() {
     // },
   ];
 
-  const onDeleteBooking = (record) => {
-    Modal.confirm({
-      title: "Are you sure, you want to delete this user's Booking?",
-      okText: "Yes",
-      okType: "danger",
-      onOk: () => {
-        setBookings((pre) => {
-          return pre.filter((booking) => booking.id !== record.id);
-        });
-      },
-    });
-  };
-  const onEditBooking = (record) => {
-    setIsEditing(true);
-    setEditingBooking({ ...record });
-  };
-  const resetEditing = () => {
-    setIsEditing(false);
-    setEditingBooking(null);
-  };
+  // const onDeleteBooking = (record) => {
+  //   Modal.confirm({
+  //     title: "Are you sure, you want to delete this user's Booking?",
+  //     okText: "Yes",
+  //     okType: "danger",
+  //     onOk: () => {
+  //       setBookings((pre) => {
+  //         return pre.filter((booking) => booking.id !== record.id);
+  //       });
+  //     },
+  //   });
+  // };
+  // const onEditBooking = (record) => {
+  //   setIsEditing(true);
+  //   setEditingBooking({ ...record });
+  // };
+  // const resetEditing = () => {
+  //   setIsEditing(false);
+  //   setEditingBooking(null);
+  // };
   return (
     <LayoutStrip>
       {/* {bookings.map((booking) =>
@@ -169,7 +169,12 @@ function BookingsList() {
 
       <h3 className="page-header">Bookings List</h3>
       <hr />
-      <Table columns={columns} dataSource={bookings} size="small" />
+      <Table
+        columns={columns}
+        dataSource={bookings}
+        size="small"
+        pagination={{ pageSize: 6 }}
+      />
     </LayoutStrip>
   );
 }

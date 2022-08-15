@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { hideLoading, showLoading } from "../redux/alertsSlice";
 import toast from "react-hot-toast";
 import axios from "axios";
+import moment from "moment";
 
 function FormEdit(props) {
   const params = useParams();
@@ -74,6 +75,9 @@ function FormEdit(props) {
   }, []);
 
   // console.log(booking);
+  const dateFormat = "YYYY-MM-DD";
+  const selectedStartDate = moment("2022-08-01", dateFormat);
+  const selectedEndDate = moment("2022-12-11", dateFormat);
 
   return (
     <div className="form-container">
@@ -82,7 +86,7 @@ function FormEdit(props) {
           layout="vertical"
           className="form-effizi"
           onFinish={onFinish}
-          initialValues={booking}
+          initialValues={{ ...booking, bookingDate: selectedStartDate }}
         >
           {/* <h1 className="card-title card-mgy">Kindly Provide Details Below...</h1> */}
           <Row gutter={20}>
@@ -253,7 +257,7 @@ function FormEdit(props) {
                 />
               </Form.Item>
             </Col>
-            {/* <Col span={8} xs={24} sm={24} lg={8}>
+            <Col span={8} xs={24} sm={24} lg={8}>
               <Form.Item
                 label="Date of Booking"
                 name="bookingDate"
@@ -264,9 +268,9 @@ function FormEdit(props) {
                   },
                 ]}
               >
-                <DatePicker picker="date" format="DD-MMMM-YYYY" />
+                <DatePicker picker="date" />
               </Form.Item>
-            </Col> */}
+            </Col>
           </Row>
 
           <div className="d-flex justify-content-end bt-submit">
